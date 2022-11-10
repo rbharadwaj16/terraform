@@ -1,0 +1,23 @@
+parameters:
+  serviceConnection: ''
+  subscription_id: ''
+  tf_rg_name: ''
+  tf_rg_location: ''
+  tf_sa_name: ''
+  tf_sa_sku: ''
+  tf_sa_container_name: ''
+
+
+- task: TerraformCLI
+  displayName: 'Terraform init'
+  inputs:
+    command: init
+    backendType: azurerm
+    backendServiceArm: ${{ parameters.serviceConnection }}
+    backendAzureRmSubscriptionId: ${{ parameters. subscription_id }}
+    backendAzureRmResourceGroupName: ${{ parameters.tf_rg_name }}
+    backendAzureRmResourceGroupLocation: ${{ parameters.tf_rg_location }}
+    backendAzureRmStorageAccountName: ${{ parameters.tf_sa_name }}
+    backendAzureRmStorageAccountSku: ${{ parameters.tf_sa_sku }}
+    backendAzureRmContainerName: ${{ parameters.tf_sa_container_name }}
+    backendAzureRmKey: terraform.tfstate 

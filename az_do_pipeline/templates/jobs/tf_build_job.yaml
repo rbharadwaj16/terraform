@@ -1,0 +1,39 @@
+parameters:
+  serviceConnection: ''
+  subscription_id: ''
+  tf_rg_name: ''
+  tf_rg_location: ''
+  tf_sa_name: ''
+  tf_sa_sku: ''
+  tf_sa_container_name: ''
+
+
+jobs:
+- job: TF_Install
+  displayName: Terraform Install
+  steps:
+    - template: ../tasks/tf_install.yaml
+
+- job: TF_Initiate
+  displayName: Terraform Initiate
+  dependsOn: TF_Install
+  steps:
+    - template: ../tasks/tf_init.yaml
+      parameters:
+        serviceConnection: ${{ parameters.serviceConnection }}
+        subscription_id: ${{ parameters.subscription_id }}
+        tf_rg_name: ${{ parameters.tf_rg_name }}
+        tf_rg_location: ${{ parameters.tf_rg_location }}
+        tf_sa_name: ${{ parameters.tf_sa_name }}
+        tf_sa_sku: ${{ parameters.tf_sa_sku }}
+        tf_sa_container_name: ${{ parameters.tf_sa_container_name }}
+
+
+
+# - job: TF_Plan
+#   displayName: Terraform Plan
+#   dependsOn: TF_Initiate
+#   steps:
+#     - template: ../tasks/tf_plan.yaml
+
+

@@ -1,0 +1,20 @@
+name: terraform_build_deploy_$(Build.DefinitionName)_$(SourceBranchName)_$(date:yyyymmdd)_$(Rev:r)
+
+parameters:
+  - name: agent_name
+    type: string
+    default: ubuntu-latest
+    - ubuntu-latest
+    - windows-latest
+
+trigger:
+  branches:
+    include:
+    - main
+
+pool:
+  vmImage: ${{ parameters.agent_name }}
+
+stages:
+- template: templates/stage/tf_build_stage.yaml
+

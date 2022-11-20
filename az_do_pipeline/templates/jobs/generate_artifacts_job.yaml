@@ -1,0 +1,20 @@
+parameters:
+  sourceFolder: ''
+  targetFolder: ''
+  artifactName: ''
+
+
+jobs:
+- job: Generate_Artifacts
+  displayName: Generate Artifacts
+  steps:
+  - template: ../tasks/copy_files.yaml
+    parameters:
+      sourceFolder: ${{ parameters.sourceFolder }}
+      targetFolder: ${{ parameters.targetFolder }}
+
+  - template: ../tasks/publish_artifacts.yaml
+    parameters:
+      artifactName: ${{ parameters.artifactName }}
+
+

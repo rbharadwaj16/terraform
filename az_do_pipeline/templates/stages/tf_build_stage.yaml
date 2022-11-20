@@ -1,0 +1,60 @@
+# parameters:
+# - name: sourceFolder
+#   type: string
+#   - '..../terraform_dir'
+#   targetFolder: ''
+#   artifactName: ''
+#   serviceConnection: ''
+#   subscription_id: ''
+#   tf_rg_name: ''
+#   tf_rg_location: ''
+#   tf_sa_name: ''
+#   tf_sa_sku: ''
+#   tf_sa_container_name: ''
+
+parameters:
+- name: sourceFolder
+  type: string
+  values:
+  - '..../terraform_dir'
+- name: targetFolder
+  type: string
+  values:
+  - 'terraform_dir'
+- name: artifactName
+  type: string
+  values: 
+  - 'terraform_infra'
+
+  # serviceConnection: ''
+  # subscription_id: ''
+  # tf_rg_name: ''
+  # tf_rg_location: ''
+  # tf_sa_name: ''
+  # tf_sa_sku: ''
+  # tf_sa_container_name: ''
+
+
+stages:
+- stage: Generate_Artifacts
+  displayName: Terraform Generate Artifact Stage
+  jobs:
+  - template: ../jobs/generate_artifacts_job.yaml
+    parameters:
+      sourceFolder: ${{ parameters.sourceFolder }}
+      targetFolder: ${{ parameters.targetFolder }}
+      artifactName: ${{ parameters.artifactName }}_${{ Build.BuildNumber }}
+
+# - stage: TF Init and Plan
+#   displayName: Terraform Init and Plan
+#   dependsOn: Generate_Artifacts
+#   jobs:
+#   - template: ../jobs/tf_build_job.yaml
+#     parameters:
+#       serviceConnection: ${{ parameters.serviceConnection }}
+#       subscription_id: ${{ parameters.subscription_id }}
+#       tf_rg_name: ${{ parameters.tf_rg_name }}
+#       tf_rg_location: ${{ parameters.tf_rg_location }}
+#       tf_sa_name: ${{ parameters.tf_sa_name }}
+#       tf_sa_sku: ${{ parameters.tf_sa_sku }}
+#       tf_sa_container_name: ${{ parameters.tf_sa_container_name }}

@@ -1,0 +1,13 @@
+parameters:
+  artifactName: ''
+
+
+
+- task: PublishPipelineArtifact@1
+  displayName: Publish Artifacts to Artifactory
+  inputs:
+    path: ${{ Build.ArtifactStagingDirectory }}
+    artifactName: ${{ parameters.artifactName }}
+    artifactType: pipeline
+    parallel: true
+    parallelCount: 10

@@ -14,7 +14,7 @@ trigger:
     - main
 
 pool:
-  vmImage: ${{ parameters.agent_name }}
+  vmImage: 'ubuntu-latest'
 
 stages:
 - template: templates/stage/tf_build_stage.yaml

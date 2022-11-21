@@ -15,9 +15,9 @@
 parameters:
 - name: sourceFolder
   type: string
-  default: 'terraform_dir'
+  default: '../terraform_dir'
   values:
-  - '..../terraform_dir'
+  - '../terraform_dir'
 - name: targetFolder
   type: string
   default: 'terraform_dir'

@@ -7,6 +7,6 @@ steps:
   displayName: Copy Files to generate Artifacts
   inputs:
     SourceFolder: ${{ parameters.sourceFolder }}
-    TargetFolder: ${Build.ArtifactStagingDirectory}
+    TargetFolder: $(Build.ArtifactStagingDirectory)
     Contents: '*'
 

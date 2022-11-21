@@ -46,7 +46,7 @@ stages:
     parameters:
       sourceFolder: ${{ parameters.sourceFolder }}
       targetFolder: ${{ parameters.targetFolder }}
-      artifactName: ${{ parameters.artifactName }}_${Build.BuildNumber}
+      artifactName: ${{ parameters.artifactName }}_$(Build.BuildNumber)
 
 # - stage: TF Init and Plan
 #   displayName: Terraform Init and Plan

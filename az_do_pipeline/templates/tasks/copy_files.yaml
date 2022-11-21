@@ -3,10 +3,10 @@ parameters:
   targetFolder: ''
 
 
-- task: CopyFiles@2
-  displayName: Copy Files to generate Artifacts
-  inputs:
-    SourceFolder: ${{ parameters.sourceFolder }}
-    TargetFolder: ${Build.ArtifactStagingDirectory}
-    Contents: '*'
+  - task: CopyFiles@2
+    displayName: Copy Files to generate Artifacts
+    inputs:
+      SourceFolder: ${{ parameters.sourceFolder }}
+      TargetFolder: ${Build.ArtifactStagingDirectory}
+      Contents: '*'
 

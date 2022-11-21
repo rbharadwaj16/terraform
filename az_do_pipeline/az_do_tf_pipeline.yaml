@@ -17,5 +17,5 @@ pool:
   vmImage: 'ubuntu-latest'
 
 stages:
-- template: templates/stage/tf_build_stage.yaml
+- template: templates/stages/tf_build_stage.yaml
 

@@ -8,5 +8,5 @@ steps:
   inputs:
     SourceFolder: ${{ parameters.sourceFolder }}
     TargetFolder: $(Build.ArtifactStagingDirectory)
-    Contents: '*'
+    Contents: '**'
 

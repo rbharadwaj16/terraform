@@ -15,14 +15,17 @@
 parameters:
 - name: sourceFolder
   type: string
+  default: './terraform_dir'
   values:
-  - '..../terraform_dir'
+  - './terraform_dir'
 - name: targetFolder
   type: string
+  default: 'terraform_dir'
   values:
   - 'terraform_dir'
 - name: artifactName
   type: string
+  default: 'terraform_infra'
   values: 
   - 'terraform_infra'
 
@@ -43,7 +46,7 @@ stages:
     parameters:
       sourceFolder: ${{ parameters.sourceFolder }}
       targetFolder: ${{ parameters.targetFolder }}
-      artifactName: ${{ parameters.artifactName }}_${{ Build.BuildNumber }}
+      artifactName: ${{ parameters.artifactName }}_$(Build.BuildNumber)
 
 # - stage: TF Init and Plan
 #   displayName: Terraform Init and Plan

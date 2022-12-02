@@ -1,4 +1,5 @@
 parameters:
+  artifactName: ''
   serviceConnection: ''
   subscription_id: ''
   tf_rg_name: ''
@@ -20,6 +21,7 @@ jobs:
   steps:
     - template: ../tasks/tf_init.yaml
       parameters:
+        artifactName: ${{ parameters.artifactName }}
         serviceConnection: ${{ parameters.serviceConnection }}
         subscription_id: ${{ parameters.subscription_id }}
         tf_rg_name: ${{ parameters.tf_rg_name }}
@@ -29,11 +31,19 @@ jobs:
         tf_sa_container_name: ${{ parameters.tf_sa_container_name }}
 
 
-
-# - job: TF_Plan
-#   displayName: Terraform Plan
-#   dependsOn: TF_Initiate
-#   steps:
-#     - template: ../tasks/tf_plan.yaml
+- job: TF_Plan
+  displayName: Terraform Plan
+  dependsOn: TF_Initiate
+  steps:
+    - template: ../tasks/tf_plan.yaml
+      parameters:
+        artifactName: ${{ parameters.artifactName }}
+        serviceConnection: ${{ parameters.serviceConnection }}
+        subscription_id: ${{ parameters.subscription_id }}
+        tf_rg_name: ${{ parameters.tf_rg_name }}
+        tf_rg_location: ${{ parameters.tf_rg_location }}
+        tf_sa_name: ${{ parameters.tf_sa_name }}
+        tf_sa_sku: ${{ parameters.tf_sa_sku }}
+        tf_sa_container_name: ${{ parameters.tf_sa_container_name }}
 
 

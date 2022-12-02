@@ -8,14 +8,14 @@
   - 'terraform_infra'
 
 variables:
-- group: {{ parameters.environment }}_tf_library
+- group: ${{ parameters.environment }}_tf_library
 
 
 stages:
-- stage: {{ parameters.environment }}_tf_init_plan
+- stage: ${{ parameters.environment }}_tf_init_plan
   displayName: Terraform Init and Plan
   ${{ if parameters.DependsOn }}:
-    dependsOn: {{ parameters.DependsOn }}
+    dependsOn: ${{ parameters.DependsOn }}
   jobs:
   - template: ../jobs/tf_init_plan_job.yaml
     parameters:

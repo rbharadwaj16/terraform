@@ -1,18 +1,14 @@
  parameters:
-  serviceConnection: ''
-  subscription_id: ''
-  tf_rg_name: ''
-  tf_rg_location: ''
-  tf_sa_name: ''
-  tf_sa_sku: ''
-  tf_sa_container_name: ''
   environment: ''
   DependsOn: ''
 - name: artifactName
   type: string
   default: 'terraform_infra'
   values: 
-  - 'terraform_infra'  
+  - 'terraform_infra'
+
+variables:
+- group: {{ parameters.environment }}_tf_library
 
 
 stages:
@@ -24,10 +20,10 @@ stages:
   - template: ../jobs/tf_init_plan_job.yaml
     parameters:
       artifactName: ${{ parameters.artifactName }}_$(Build.BuildNumber)
-      serviceConnection: ${{ parameters.serviceConnection }}
-      subscription_id: ${{ parameters.subscription_id }}
-      tf_rg_name: ${{ parameters.tf_rg_name }}
-      tf_rg_location: ${{ parameters.tf_rg_location }}
-      tf_sa_name: ${{ parameters.tf_sa_name }}
-      tf_sa_sku: ${{ parameters.tf_sa_sku }}
-      tf_sa_container_name: ${{ parameters.tf_sa_container_name }}
+      serviceConnection: $(serviceConnection)
+      subscription_id: $(subscription-id)
+      tf_rg_name: $(tf-rg-name)
+      tf_rg_location: $(tf-rg-location)
+      tf_sa_name: $(tf-sa-name)
+      tf_sa_sku: $(tf-sa-sku)
+      tf_sa_container_name: $(tf-sa-container-name)

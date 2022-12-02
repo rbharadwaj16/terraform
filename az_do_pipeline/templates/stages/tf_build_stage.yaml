@@ -1,5 +1,6 @@
 parameters:
-- environment: ''
+- name: environment
+  type: string
 - name: sourceFolder
   type: string
   default: './terraform_dir'

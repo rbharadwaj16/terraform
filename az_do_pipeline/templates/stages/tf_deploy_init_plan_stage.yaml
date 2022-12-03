@@ -1,5 +1,5 @@
 parameters:
-- name: environment
+- name: env
   type: string
 - name: DependsOn
   type: object
@@ -12,9 +12,9 @@ parameters:
 
 
 stages:
-- stage: ${{ parameters.environment }}_tf_init_plan
+- stage: ${{ parameters.env }}_tf_init_plan
   variables:
-  - group: ${{ parameters.environment }}_tf_library
+  - group: ${{ parameters.env }}_tf_library
   displayName: Terraform Init and Plan
   ${{ if parameters.DependsOn }}:
     dependsOn: ${{ parameters.DependsOn }}

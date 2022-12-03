@@ -1,5 +1,5 @@
 parameters:
-- name: environment
+- name: env
   type: string
 - name: sourceFolder
   type: string
@@ -18,7 +18,7 @@ parameters:
   - 'terraform_infra'
 
 stages:
-- stage: ${{ parameters.environment }}_Artifacts
+- stage: ${{ parameters.env }}_Artifacts
   displayName: Terraform Generate Artifact Stage
   jobs:
   - template: ../jobs/generate_artifacts_job.yaml

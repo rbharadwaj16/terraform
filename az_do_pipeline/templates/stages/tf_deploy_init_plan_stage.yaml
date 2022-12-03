@@ -9,12 +9,12 @@ parameters:
   values: 
   - 'terraform_infra'
 
-variables:
-- group: ${{ parameters.environment }}_tf_library
 
 
 stages:
 - stage: ${{ parameters.environment }}_tf_init_plan
+  variables:
+  - group: ${{ parameters.environment }}_tf_library
   displayName: Terraform Init and Plan
   ${{ if parameters.DependsOn }}:
     dependsOn: ${{ parameters.DependsOn }}

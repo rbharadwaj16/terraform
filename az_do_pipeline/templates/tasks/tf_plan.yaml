@@ -10,7 +10,7 @@ parameters:
   environment: ''
 
 steps:
-- task: TerraformCLI
+- task: TerraformCLI@0
   displayName: Terraform Plan
   inputs:
     command: plan

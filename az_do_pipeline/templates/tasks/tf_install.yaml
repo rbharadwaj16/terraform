@@ -1,5 +1,2 @@
-- task: TerraformInstaller
-  displayName: Install Terraform
-  inputs:
-    terraformVersion: 1.3.3
+
     

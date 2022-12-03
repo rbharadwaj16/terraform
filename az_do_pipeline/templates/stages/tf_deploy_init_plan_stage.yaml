@@ -2,7 +2,7 @@ parameters:
 - name: environment
   type: string
 - name: DependsOn
-  type: string
+  type: object
 - name: artifactName
   type: string
   default: 'terraform_infra'

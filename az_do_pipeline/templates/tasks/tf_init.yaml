@@ -9,7 +9,7 @@ parameters:
   tf_sa_container_name: ''
 
 
-
+steps:
 - task: TerraformCLI
   displayName: 'Terraform init'
   inputs:

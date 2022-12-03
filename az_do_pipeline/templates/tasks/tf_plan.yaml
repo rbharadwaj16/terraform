@@ -9,6 +9,7 @@ parameters:
   tf_sa_container_name: ''
   environment: ''
 
+steps:
 - task: TerraformCLI
   displayName: Terraform Plan
   inputs:

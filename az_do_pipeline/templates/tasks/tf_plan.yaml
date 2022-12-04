@@ -10,10 +10,11 @@ parameters:
   tf_sa_container_name: ''
   environment: ''
 
+variables:
+- group: $(env)_tf_library
+
 steps:
 - task: TerraformCLI@0
-  variables:
-  - group: $(env)_tf_library
   displayName: Terraform Plan
   inputs:
     command: plan

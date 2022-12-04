@@ -20,6 +20,7 @@ jobs:
   variables:
   - group: dev_tf_library
   steps:
+    - template: ../tasks/download_artifacts.yaml
     - template: ../tasks/tf_install.yaml
     - template: ../tasks/tf_init.yaml
       parameters:

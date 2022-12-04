@@ -10,10 +10,10 @@ parameters:
 
 
 jobs:
-- job: TF_Install
-  displayName: Terraform Install
-  steps:
-    - template: ../tasks/tf_install.yaml
+# - job: TF_Install
+#   displayName: Terraform Install
+#   steps:
+#     - template: ../tasks/tf_install.yaml
 
 - job: TF_Initiate
   displayName: Terraform Initiate
@@ -21,6 +21,7 @@ jobs:
   - group: dev_tf_library
   dependsOn: TF_Install
   steps:
+    - template: ../tasks/tf_install.yaml
     - template: ../tasks/tf_init.yaml
       parameters:
         artifactName: ${{ parameters.artifactName }}
@@ -37,10 +38,11 @@ jobs:
   displayName: Terraform Plan
   dependsOn: TF_Initiate
   steps:
+    - template: ../tasks/tf_install.yaml
     - template: ../tasks/tf_plan.yaml
       parameters:
         artifactName: ${{ parameters.artifactName }}
-        serviceConnection: reload-sc
+        serviceConnection: ${{ parameters.serviceConnection }}
         subscription_id: ${{ parameters.subscription_id }}
         tf_rg_name: ${{ parameters.tf_rg_name }}
         tf_rg_location: ${{ parameters.tf_rg_location }}

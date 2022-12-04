@@ -8,6 +8,8 @@ parameters:
   default: 'terraform_infra'
   values: 
   - 'terraform_infra'
+- name: serviceConnection
+  type: object
 
 
 
@@ -22,7 +24,7 @@ stages:
   - template: ../jobs/tf_init_plan_job.yaml
     parameters:
       artifactName: ${{ parameters.artifactName }}_$(Build.BuildNumber)
-      serviceConnection: $(serviceConnection)
+      serviceConnection: ${{ parameters.serviceConnection }}
       subscription_id: $(subscription-id)
       tf_rg_name: $(tf-rg-name)
       tf_rg_location: $(tf-rg-location)

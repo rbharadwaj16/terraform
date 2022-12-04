@@ -25,7 +25,7 @@ jobs:
     - template: ../tasks/tf_init.yaml
       parameters:
         artifactName: ${{ parameters.artifactName }}
-        serviceConnection: ${{ parameters.serviceConnection }}
+        serviceConnection: $(serviceConnection)
         subscription_id: ${{ parameters.subscription_id }}
         tf_rg_name: ${{ parameters.tf_rg_name }}
         tf_rg_location: ${{ parameters.tf_rg_location }}
@@ -43,7 +43,7 @@ jobs:
     - template: ../tasks/tf_plan.yaml
       parameters:
         artifactName: ${{ parameters.artifactName }}
-        serviceConnection: ${{ parameters.serviceConnection }}
+        serviceConnection: $(serviceConnection)
         subscription_id: ${{ parameters.subscription_id }}
         tf_rg_name: ${{ parameters.tf_rg_name }}
         tf_rg_location: ${{ parameters.tf_rg_location }}

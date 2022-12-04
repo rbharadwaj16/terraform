@@ -11,9 +11,7 @@ parameters:
 
 
 jobs:
-  variables:
-  - group: ${{ parameters.env }}_tf_library
-  
+
 - job: TF_Initiate
   displayName: Terraform Initiate
   steps:
@@ -33,6 +31,8 @@ jobs:
 
 - job: TF_Plan
   displayName: Terraform Plan
+  variables:
+  - group: ${{ parameters.env }}_tf_library
   dependsOn: TF_Initiate
   steps:
     - template: ../tasks/download_artifacts.yaml

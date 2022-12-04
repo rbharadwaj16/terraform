@@ -22,7 +22,7 @@ steps:
     command: plan
     backendType: azurerm
     workingDirectory: $(Build.ArtifactStagingDirectory)/${{ parameters.artifactName }}
-    commandOptions: '-var-file = configuration/${{ parameters.env }}.tfvars -var "subscription_id= ${{ parameters.subscription_id }}" -var "client_id= ${{ parameters.client_id }}" -var "client_secret= ${{ parameters.client_secret }}" -var "tenant_id= ${{ parameters.tenant_id }}" -lock=true  -lock-timeout=30s'
+    commandOptions: ' --var-file = configuration/${{ parameters.env }}.tfvars -var "subscription_id= ${{ parameters.subscription_id }}" -var "client_id= ${{ parameters.client_id }}" -var "client_secret= ${{ parameters.client_secret }}" -var "tenant_id= ${{ parameters.tenant_id }}" -lock=true  -lock-timeout=30s'
     backendServiceArm: ${{ parameters.serviceConnection }}
     backendAzureRmSubscriptionId: ${{ parameters.subscription_id }}
     backendAzureRmResourceGroupName: ${{ parameters.tf_rg_name }}

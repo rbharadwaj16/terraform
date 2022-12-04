@@ -19,7 +19,6 @@ jobs:
   displayName: Terraform Initiate
   variables:
   - group: dev_tf_library
-  dependsOn: TF_Install
   steps:
     - template: ../tasks/tf_install.yaml
     - template: ../tasks/tf_init.yaml

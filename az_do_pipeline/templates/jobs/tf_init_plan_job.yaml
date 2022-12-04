@@ -38,6 +38,7 @@ jobs:
   displayName: Terraform Plan
   dependsOn: TF_Initiate
   steps:
+    - template: ../tasks/download_artifacts.yaml
     - template: ../tasks/tf_install.yaml
     - template: ../tasks/tf_plan.yaml
       parameters:

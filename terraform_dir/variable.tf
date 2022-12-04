@@ -36,7 +36,7 @@ variable "client_secret" {
 
 variable "tenant_id" {
     type = string
-    desdescription = "Tenant ID in which subscription resides"  
+    description = "Tenant ID in which subscription resides"  
 }
 # Resource Group Module
 

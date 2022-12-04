@@ -1,4 +1,5 @@
 parameters:
+  env: ''
   artifactName: ''
   serviceConnection: ''
   subscription_id: ''
@@ -17,8 +18,6 @@ jobs:
 
 - job: TF_Initiate
   displayName: Terraform Initiate
-  variables:
-  - group: dev_tf_library
   steps:
     - template: ../tasks/download_artifacts.yaml
     - template: ../tasks/tf_install.yaml
@@ -42,6 +41,7 @@ jobs:
     - template: ../tasks/tf_install.yaml
     - template: ../tasks/tf_plan.yaml
       parameters:
+        env: ${{ parameters.env }}
         artifactName: ${{ parameters.artifactName }}
         serviceConnection: ${{ parameters.serviceConnection }}
         subscription_id: ${{ parameters.subscription_id }}

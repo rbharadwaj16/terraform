@@ -1,4 +1,5 @@
 parameters:
+  env: ''
   artifactName: ''
   serviceConnection: ''
   subscription_id: ''
@@ -11,12 +12,14 @@ parameters:
 
 steps:
 - task: TerraformCLI@0
+  variables:
+  - group: $(env)_tf_library
   displayName: Terraform Plan
   inputs:
     command: plan
     backendType: azurerm
     workingDirectory: $(Build.ArtifactStagingDirectory)/${{ parameters.artifactName }}
-    commandOptions: '-var-file = configuration/${{ parameters.environment }}.tfvars -var = "subscription_id=$(subscription_id)" -var = "client_id=$(client_id)" -var = "client_secret=$(client_secret) -var = "tenant_id=$(tenant_id)" -lock=true  -lock-timeout=30s'
+    commandOptions: '-var-file = configuration/${{ parameters.env }}.tfvars -var = "subscription_id=$(subscription_id)" -var = "client_id=$(client_id)" -var = "client_secret=$(client_secret) -var = "tenant_id=$(tenant_id)" -lock=true  -lock-timeout=30s'
     backendServiceArm: ${{ parameters.serviceConnection }}
     backendAzureRmSubscriptionId: ${{ parameters.subscription_id }}
     backendAzureRmResourceGroupName: ${{ parameters.tf_rg_name }}

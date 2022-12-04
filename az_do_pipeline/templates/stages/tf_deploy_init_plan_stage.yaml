@@ -23,6 +23,7 @@ stages:
   jobs:
   - template: ../jobs/tf_init_plan_job.yaml
     parameters:
+      env: ${{ parameters.env }}
       artifactName: ${{ parameters.artifactName }}_$(Build.BuildNumber)
       serviceConnection: ${{ parameters.serviceConnection }}
       subscription_id: $(subscription-id)

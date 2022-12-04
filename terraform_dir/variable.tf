@@ -19,6 +19,25 @@ variable "location_short" {
     description = "Short name for location"
 }
 
+variable "subscription_id" {
+    type = string
+    description = "ID of Subscription in which resource is to be deployed"  
+}
+
+variable "client_id" {
+    type = string
+    description = "Client ID to authorise"
+}
+
+variable "client_secret" {
+    type = string
+    description = "Client secret to authorise" 
+}
+
+variable "tenant_id" {
+    type = string
+    desdescription = "Tenant ID in which subscription resides"  
+}
 # Resource Group Module
 
 variable "rg_name" {

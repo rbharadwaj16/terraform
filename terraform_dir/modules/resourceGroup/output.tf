@@ -1,4 +1,4 @@
 output "rg_id" {
-    value = azurerm_resource_group.rg.id[each.key]  
+    value = {for k,v in azurerm_resource_group.rg: k => v.id }
 }
 

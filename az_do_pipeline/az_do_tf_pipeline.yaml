@@ -19,11 +19,12 @@ pool:
 stages:
 - template: templates/stages/tf_build_stage.yaml
   parameters:
-    environment: build
+    env: build
 
 #DEV Env
 - template: templates/stages/tf_deploy_init_plan_stage.yaml
   parameters:
-    environment: dev
+    env: dev
+    serviceConnection: $(sc)
     DependsOn: 
-    - build
+    - dev_Artifacts

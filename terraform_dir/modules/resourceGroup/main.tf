@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "rg" {
     for_each = var.rg_name
-    name = format("%s_%s_%s_%s", var.owner, each.key, var.env, var.location_short)
+    name = ${var.owner}_${var.env}_${each.value}_$var.location_short
     location = var.location
     lifecycle {
       ignore_changes = [

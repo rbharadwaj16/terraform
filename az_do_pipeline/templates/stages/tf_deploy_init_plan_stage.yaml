@@ -1,26 +1,31 @@
- parameters:
-  environment: ''
-  DependsOn: ''
+parameters:
+- name: env
+  type: string
+- name: DependsOn
+  type: object
 - name: artifactName
   type: string
   default: 'terraform_infra'
   values: 
   - 'terraform_infra'
+- name: serviceConnection
+  type: object
 
-variables:
-- group: {{ parameters.environment }}_tf_library
 
 
 stages:
-- stage: {{ parameters.environment }}_tf_init_plan
+- stage: ${{ parameters.env }}_tf_init_plan
   displayName: Terraform Init and Plan
-  ${{ if parameters.DependsOn }}:
-    dependsOn: {{ parameters.DependsOn }}
+  variables:
+  - group: ${{ parameters.env }}_tf_library
+  # ${{ if parameters.DependsOn }}:
+  #   dependsOn: ${{ parameters.DependsOn }}
   jobs:
   - template: ../jobs/tf_init_plan_job.yaml
     parameters:
+      env: ${{ parameters.env }}
       artifactName: ${{ parameters.artifactName }}_$(Build.BuildNumber)
-      serviceConnection: $(serviceConnection)
+      serviceConnection: ${{ parameters.serviceConnection }}
       subscription_id: $(subscription-id)
       tf_rg_name: $(tf-rg-name)
       tf_rg_location: $(tf-rg-location)

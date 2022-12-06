@@ -40,6 +40,7 @@ stages:
   dependsOn: ${{ parameters.env }}_tf_init_plan
   jobs:
   - template: ../jobs/tf_init_apply_job.yaml
+    parameters:
       env: ${{ parameters.env }}
       artifactName: ${{ parameters.artifactName }}_$(Build.BuildNumber)
       serviceConnection: ${{ parameters.serviceConnection }}

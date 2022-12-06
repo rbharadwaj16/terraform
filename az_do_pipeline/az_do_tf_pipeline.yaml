@@ -22,7 +22,7 @@ stages:
     env: build
 
 #DEV Env
-- template: templates/stages/tf_deploy_init_plan_stage.yaml
+- template: templates/stages/tf_deploy_init_plan_apply_stage.yaml
   parameters:
     env: dev
     serviceConnection: $(sc)

@@ -1,0 +1,53 @@
+parameters:
+  env: ''
+  artifactName: ''
+  serviceConnection: ''
+  subscription_id: ''
+  tf_rg_name: ''
+  tf_rg_location: ''
+  tf_sa_name: ''
+  tf_sa_sku: ''
+  tf_sa_container_name: ''
+
+
+
+jobs:
+- deployment: TF_Initiate_And_Apply
+  displayName: Terraform Init and Apply
+  workspace:
+    clean: all
+  continueOnError: false
+  timeoutInMinutes: 60
+  variables:
+  - group: ${{ parameters.env }}_tf_library
+  environment: ${{ parameters.env }}_tf_apply
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+          - template: ../tasks/download_artifacts.yaml
+          - template: ../tasks/tf_install.yaml
+          - template: ../tasks/tf_init.yaml
+            parameters:
+              artifactName: ${{ parameters.artifactName }}
+              serviceConnection: ${{ parameters.serviceConnection }}
+              subscription_id: ${{ parameters.subscription_id }}
+              tf_rg_name: ${{ parameters.tf_rg_name }}
+              tf_rg_location: ${{ parameters.tf_rg_location }}
+              tf_sa_name: ${{ parameters.tf_sa_name }}
+              tf_sa_sku: ${{ parameters.tf_sa_sku }}
+              tf_sa_container_name: ${{ parameters.tf_sa_container_name }}
+          - template: ../tasks/tf_apply.yaml
+            parameters:
+              env: ${{ parameters.env }}
+              artifactName: ${{ parameters.artifactName }}
+              serviceConnection: ${{ parameters.serviceConnection }}
+              subscription_id: ${{ parameters.subscription_id }}
+              tf_rg_name: ${{ parameters.tf_rg_name }}
+              tf_rg_location: ${{ parameters.tf_rg_location }}
+              tf_sa_name: ${{ parameters.tf_sa_name }}
+              tf_sa_sku: ${{ parameters.tf_sa_sku }}
+              tf_sa_container_name: ${{ parameters.tf_sa_container_name }}
+              client_id: $(client-id)
+              client_secret: '$(client-secret)'
+              tenant_id: '$(tenant-id)'

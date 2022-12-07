@@ -32,3 +32,22 @@ stages:
       tf_sa_name: $(tf-sa-name)
       tf_sa_sku: $(tf-sa-sku)
       tf_sa_container_name: $(tf-sa-container-name)
+
+- stage: ${{ parameters.env }}_tf_apply
+  displayName: Terraform Init and Apply
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  variables:
+  - group: ${{ parameters.env }}_tf_library
+  dependsOn: ${{ parameters.env }}_tf_init_plan
+  jobs:
+  - template: ../jobs/tf_init_apply_job.yaml
+    parameters:
+      env: ${{ parameters.env }}
+      artifactName: ${{ parameters.artifactName }}_$(Build.BuildNumber)
+      serviceConnection: ${{ parameters.serviceConnection }}
+      subscription_id: $(subscription-id)
+      tf_rg_name: $(tf-rg-name)
+      tf_rg_location: $(tf-rg-location)
+      tf_sa_name: $(tf-sa-name)
+      tf_sa_sku: $(tf-sa-sku)
+      tf_sa_container_name: $(tf-sa-container-name)

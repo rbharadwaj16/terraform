@@ -1,4 +1,5 @@
 parameters:
+  env: ''
   artifactName: ''
   serviceConnection: ''
   subscription_id: ''
@@ -7,17 +8,20 @@ parameters:
   tf_sa_name: ''
   tf_sa_sku: ''
   tf_sa_container_name: ''
+  client_id: ''
+  client_secret: ''
+  tenant_id: ''
+
 
 
 steps:
 - task: TerraformCLI@0
-  displayName: 'Terraform init'
+  displayName: Terraform Plan
   inputs:
-    command: init
+    command: apply
     backendType: azurerm
-    #ensureBackend: 'true'    #commented out since backend is already present
     workingDirectory: $(Build.ArtifactStagingDirectory)/${{ parameters.artifactName }}
-    commandOptions: '-get=true -lock=true -lock-timeout=30s'
+    commandOptions: '-var-file=configuration/${{ parameters.env }}.tfvars -var "subscription_id=${{ parameters.subscription_id }}" -var "client_id=${{ parameters.client_id }}" -var "client_secret=${{ parameters.client_secret }}" -var "tenant_id=${{ parameters.tenant_id }}" -auto-approve -lock=true  -lock-timeout=30s'
     backendServiceArm: ${{ parameters.serviceConnection }}
     backendAzureRmSubscriptionId: ${{ parameters.subscription_id }}
     backendAzureRmResourceGroupName: ${{ parameters.tf_rg_name }}
@@ -25,4 +29,4 @@ steps:
     backendAzureRmStorageAccountName: ${{ parameters.tf_sa_name }}
     backendAzureRmStorageAccountSku: ${{ parameters.tf_sa_sku }}
     backendAzureRmContainerName: ${{ parameters.tf_sa_container_name }}
-    backendAzureRmKey: terraform.tfstate 
+    backendAzureRmKey: terraform.tfstate

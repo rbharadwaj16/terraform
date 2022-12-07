@@ -8,7 +8,6 @@ parameters:
   tf_sa_name: ''
   tf_sa_sku: ''
   tf_sa_container_name: ''
-  environment: ''
   client_id: ''
   client_secret: ''
   tenant_id: ''

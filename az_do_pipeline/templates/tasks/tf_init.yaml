@@ -15,7 +15,7 @@ steps:
   inputs:
     command: init
     backendType: azurerm
-    ensureBackend: 'true'
+    #ensureBackend: 'true'    #commented out since backend is already present
     workingDirectory: $(Build.ArtifactStagingDirectory)/${{ parameters.artifactName }}
     commandOptions: '-get=true -lock=true -lock-timeout=30s'
     backendServiceArm: ${{ parameters.serviceConnection }}

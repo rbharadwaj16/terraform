@@ -2,6 +2,9 @@ owner = "raghav"
 location = "australiaeast"
 env = "dev"
 location_short = "aue"
+purpose_tag = "Test"
+owner_tag = "raghavendra.bharadwaj@servian.com"
+client_tag = "L&D"
 ####################### Resource Group Module ####################################
 rg_name = ["platform"] #add rg name here to create more rg
 

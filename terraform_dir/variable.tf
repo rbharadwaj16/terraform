@@ -38,9 +38,32 @@ variable "tenant_id" {
     type = string
     description = "Tenant ID in which subscription resides"  
 }
+
+variable "purpose_tag" {
+  type        = string
+  description = "Purpose Tag"
+}
+
+variable "owner_tag" {
+  type        = string
+  description = "Owner tag"
+}
+
+variable "client_tag" {
+  type        = string
+  description = "Client tag"
+}
+
 # Resource Group Module
 
 variable "rg_name" {
     type = list(string)
     description = "List of RG's to be created"
+}
+
+# VNET Module
+
+variable "vnet" {
+  type = map
+  description = "Map of VNET attributes"
 }

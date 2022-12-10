@@ -54,16 +54,20 @@ variable "client_tag" {
   description = "Client tag"
 }
 
-# Resource Group Module
+############################################################ Resource Group Module #######################################################################
 
 variable "rg_name" {
     type = list(string)
     description = "List of RG's to be created"
 }
 
-# VNET Module
+########################## VNET Module #############################################################################
 
 variable "vnet" {
   type = map
   description = "Map of VNET attributes"
+}
+
+variable "network_rg" {
+  description = "RG in which VNET is to be created"
 }

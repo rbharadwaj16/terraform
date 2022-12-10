@@ -5,7 +5,7 @@ variable "owner" {
 
 variable "network_rg" {
   type        = list(string)
-  description = "List of RG's to be created"
+  description = "RG in which VNET is to be created"
 }
 
 variable "location" {

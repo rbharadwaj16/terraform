@@ -9,6 +9,8 @@ client_tag = "L&D"
 rg_name = ["platform"] #add rg name here to create more rg
 
 ###################### Network Module ############################################
+
+network_rg = ["platform"]
 vnet = {
     hub_vnet = {
         name = "hub"

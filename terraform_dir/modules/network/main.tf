@@ -7,8 +7,8 @@ data "azurerm_resource_group" "network_rg" {
 resource "azurerm_virtual_network" "vnet" {
   for_each            = var.vnet
   name                = "${var.owner}_${var.env}_${each.value["name"]}_${var.location_short}}"
-  location            = data.azurerm_resource_group.network_rg.location[each.value]
-  resource_group_name = data.azurerm_resource_group.network_rg.name[each.value]
+  location            = data.azurerm_resource_group.network_rg.location[each.key]
+  resource_group_name = data.azurerm_resource_group.network_rg.name[each.key]
   address_space       = each.value["address_space"]
   lifecycle {
     ignore_changes = [

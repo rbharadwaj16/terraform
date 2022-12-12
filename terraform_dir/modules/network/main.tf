@@ -4,8 +4,8 @@ data "azurerm_resource_group" "network_rg" {
 }
 
 locals {
-  network_rg_name = toset([for i in data.azurerm_resource_group.network_rg: i.name])
-  network_rg_location = toset([for i in data.azurerm_resource_group.network_rg: i.location])
+  network_rg_name = join([for i in data.azurerm_resource_group.network_rg: i.name])
+  network_rg_location = join([for i in data.azurerm_resource_group.network_rg: i.location])
 }
 resource "azurerm_virtual_network" "vnet" {
   for_each            = var.vnet

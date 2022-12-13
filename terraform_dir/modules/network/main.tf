@@ -7,7 +7,7 @@ data "azurerm_resource_group" "network_rg" {
 
 resource "azurerm_virtual_network" "vnet" {
   for_each            = {for idx, val in setproduct(keys(var.vnet), var.network_rg): idx => val}
-  name                = "${var.owner}_${var.env}_${var.vnet[each.value[0]].name}_${var.location_short}}"
+  name                = "${var.owner}_${var.env}_${var.vnet[each.value[0]].name}_${var.location_short}"
 
   location            = data.azurerm_resource_group.network_rg[each.value[1]].location
 

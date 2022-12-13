@@ -16,7 +16,7 @@ parameters:
 
 steps:
 - task: TerraformCLI@0
-  displayName: Terraform Plan
+  displayName: Terraform Apply
   inputs:
     command: apply
     backendType: azurerm

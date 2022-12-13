@@ -3,9 +3,9 @@ variable "owner" {
   description = "Owner of the resource"
 }
 
-variable "rg_name" {
+variable "network_rg" {
   type        = list(string)
-  description = "List of RG's to be created"
+  description = "RG in which VNET is to be created"
 }
 
 variable "location" {
@@ -21,7 +21,10 @@ variable "location_short" {
   type        = string
   description = "Short name for location"
 }
-
+variable "vnet" {
+  type = map
+  description = "Map of VNET attributes"
+}
 variable "purpose_tag" {
   type        = string
   description = "Purpose Tag"

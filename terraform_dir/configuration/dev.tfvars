@@ -10,7 +10,7 @@ rg_name = ["platform"] #add rg name here to create more rg
 
 ###################### Network Module ############################################
 
-network_rg = ["platform", "test"]
+network_rg = ["platform"]
 vnet = {
     hub_vnet = {
         name = "hub"

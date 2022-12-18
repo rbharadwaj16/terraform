@@ -71,3 +71,8 @@ variable "vnet" {
 variable "network_rg" {
   description = "RG in which VNET is to be created"
 }
+
+variable "subnets" {
+  type = map
+  description = "Map of Subnet attributes"
+}

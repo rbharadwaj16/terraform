@@ -22,4 +22,41 @@ vnet = {
     }
 }
 
-
+subnets = {
+    fw_subnet = {
+        name = "fw_subnet"
+        subnet_rg = "raghav_dev_platform_aue"
+        address_space = ["10.200.0.0/24"]
+        vnet_name = "raghav_dev_hub_aue"
+    }
+    gw_subnet = {
+        name = "gw_subnet"
+        subnet_rg = "raghav_dev_platform_aue"
+        address_space = ["10.200.1.0/24"]
+        vnet_name = "raghav_dev_hub_aue"
+    }
+    bastion_subnet = {
+        name = "bastion_subnet"
+        subnet_rg = "raghav_dev_platform_aue"
+        address_space = ["10.200.2.0/24"]
+        vnet_name = "raghav_dev_hub_aue"
+    }
+    host_subnet = {
+        name = "host_subnet"
+        subnet_rg = "raghav_dev_platform_aue"
+        address_space = ["10.201.0.0/22"]
+        vnet_name = "raghav_dev_spoke_aue"
+    }
+    ingress_subnet = {
+        name = "ingress_subnet"
+        subnet_rg = "raghav_dev_platform_aue"
+        address_space = ["10.201.4.0/24"]
+        vnet_name = "raghav_dev_spoke_aue"
+    }
+    pe_subnet = {
+        name = "pe_subnet"
+        subnet_rg = "raghav_dev_platform_aue"
+        address_space = ["10.201.5.0/24"]
+        vnet_name = "raghav_dev_spoke_aue"
+    }
+}

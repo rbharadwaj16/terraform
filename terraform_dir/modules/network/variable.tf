@@ -39,3 +39,10 @@ variable "client_tag" {
   type        = string
   description = "Client tag"
 }
+
+
+variable "subnets" {
+  type = map
+  description = "Map of Subnet attributes"
+}
+

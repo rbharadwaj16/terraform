@@ -23,3 +23,19 @@ module "network" {
   client_tag     = var.client_tag
   subnets        = var.subnets
 }
+
+module "kubernetes" {
+  source         = "./modules/kubernetes"
+  owner          = var.owner
+  env            = var.env
+  location       = var.location
+  location_short = var.location_short
+  purpose = var.purpose 
+  aks_rg_name =  var.aks_rg_name
+  default_pool_subnet_id = var.default_pool_subnet_id
+  node_pool_subnet_id = var.node_pool_subnet_id
+  dns_service_ip = var.dns_service_ip
+  
+
+  
+}

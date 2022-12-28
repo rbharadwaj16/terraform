@@ -76,3 +76,35 @@ variable "subnets" {
   type = map
   description = "Map of Subnet attributes"
 }
+
+################################## Kube Module ##################################################################
+
+variable "purpose" {
+  type = string
+  description = "Purpose of Kube cluster"
+}
+
+variable "aks_rg_name" {
+  type = string
+  description = "Name of RG in which Kube cluster should be deployed"
+}
+
+variable "default_pool_subnet_id" {
+  type = string
+  description = "Subnet ID in which default node pool should be deployed"
+}
+
+variable "node_pool_subnet_id" {
+  type = string
+  description = "Subnet ID in which app node pools should be deployed"
+}
+
+variable "dns_service_ip" {
+  type = string
+  description = "IP of Kube DNS"
+}
+
+variable "docker_bridge_cidr" {
+  type = string
+  description = "Overlay Network"
+}

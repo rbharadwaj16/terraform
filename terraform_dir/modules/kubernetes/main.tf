@@ -2,7 +2,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     name = "${var.owner}_${var.env}_${var.purpose}_${var.location_short}"
     location = var.location
     resource_group_name = var.aks_rg_name
-    dns_prefix = "${var.owner}_${var.env}_${var.purpose}_${var.location_short}"
+    dns_prefix = "${var.owner}-${var.env}-${var.purpose}-${var.location_short}"
 
     default_node_pool  {
         name = "default"
@@ -24,6 +24,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
     network_profile  {
             network_plugin = "azure"
+            service_cidr = var.service_cidr
             network_policy = "azure"
             dns_service_ip = var.dns_service_ip
             docker_bridge_cidr = var.docker_bridge_cidr

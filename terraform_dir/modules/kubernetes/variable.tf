@@ -38,6 +38,11 @@ variable "node_pool_subnet_id" {
   description = "Subnet ID in which app node pools should be deployed"
 }
 
+variable "service_cidr" {
+    type = string
+    description = "AKS internal services CIDR" 
+}
+
 variable "dns_service_ip" {
   type = string
   description = "IP of Kube DNS"

@@ -60,3 +60,14 @@ subnets = {
         vnet_name = "raghav_dev_spoke_aue"
     }
 }
+
+################################################### Kube Module #############################################################
+
+purpose = "platform"
+aks_rg_name = "raghav_dev_platform_aue"
+default_pool_subnet_id = "/subscriptions/58f627af-5f2f-4f24-b8b3-67712c182a5c/resourceGroups/raghav_dev_platform_aue/providers/Microsoft.Network/virtualNetworks/raghav_dev_spoke_aue/subnets/host_subnet"
+node_pool_subnet_id = "/subscriptions/58f627af-5f2f-4f24-b8b3-67712c182a5c/resourceGroups/raghav_dev_platform_aue/providers/Microsoft.Network/virtualNetworks/raghav_dev_spoke_aue/subnets/host_subnet"
+dns_service_ip = "10.1.0.10"
+service_cidr = "10.1.0.0/24"
+docker_bridge_cidr = "172.17.0.1/16"
+

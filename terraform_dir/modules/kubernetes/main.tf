@@ -10,8 +10,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
         enable_auto_scaling = true
         enable_node_public_ip = false
         os_disk_type = "Managed"
-        os_sku = "Ubuntu"
-        pod_subnet_id = var.default_pool_subnet_id  
+        os_sku = "Ubuntu" 
         vnet_subnet_id = var.node_pool_subnet_id
         max_count = 3
         min_count = 1

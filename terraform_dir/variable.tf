@@ -89,11 +89,6 @@ variable "aks_rg_name" {
   description = "Name of RG in which Kube cluster should be deployed"
 }
 
-variable "default_pool_subnet_id" {
-  type = string
-  description = "Subnet ID in which default node pool should be deployed"
-}
-
 variable "node_pool_subnet_id" {
   type = string
   description = "Subnet ID in which app node pools should be deployed"

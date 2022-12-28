@@ -32,7 +32,6 @@ module "kubernetes" {
   location_short         = var.location_short
   purpose                = var.purpose
   aks_rg_name            = var.aks_rg_name
-  default_pool_subnet_id = var.default_pool_subnet_id
   node_pool_subnet_id    = var.node_pool_subnet_id
   service_cidr           = var.service_cidr
   dns_service_ip         = var.dns_service_ip

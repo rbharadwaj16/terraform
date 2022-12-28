@@ -19,16 +19,16 @@ resource "azurerm_kubernetes_cluster" "aks" {
         }
 
     identity  {
-        type = SystemAssigned
+        type = "SystemAssigned"
         }
 
     network_profile  {
-            network_plugin = azure
-            network_policy = azure
+            network_plugin = "azure"
+            network_policy = "azure"
             dns_service_ip = var.dns_service_ip
             docker_bridge_cidr = var.docker_bridge_cidr
-            outbound_type = loadBalancer
-            load_balancer_sku = standard
+            outbound_type = "loadBalancer"
+            load_balancer_sku = "standard"
 
         }
   

@@ -25,16 +25,26 @@ module "network" {
 }
 
 module "kubernetes" {
-  source                 = "./modules/kubernetes"
-  owner                  = var.owner
-  env                    = var.env
-  location               = var.location
-  location_short         = var.location_short
-  purpose                = var.purpose
-  aks_rg_name            = var.aks_rg_name
-  node_pool_subnet_id    = var.node_pool_subnet_id
-  service_cidr           = var.service_cidr
-  dns_service_ip         = var.dns_service_ip
-  docker_bridge_cidr     = var.docker_bridge_cidr
+  source              = "./modules/kubernetes"
+  owner               = var.owner
+  env                 = var.env
+  location            = var.location
+  location_short      = var.location_short
+  purpose             = var.purpose
+  aks_rg_name         = var.aks_rg_name
+  node_pool_subnet_id = var.node_pool_subnet_id
+  service_cidr        = var.service_cidr
+  dns_service_ip      = var.dns_service_ip
+  docker_bridge_cidr  = var.docker_bridge_cidr
 
+}
+
+
+module "keyvault" {
+  source         = "./modules/keyvault"
+  owner          = var.owner
+  env            = var.env
+  location       = var.location
+  location_short = var.location_short
+  kv_mappings    = var.kv_mappings
 }

@@ -77,7 +77,7 @@ variable "subnets" {
   description = "Map of Subnet attributes"
 }
 
-################################## Kube Module ##################################################################
+################################## Kube Module ##################################################################################################
 
 variable "purpose" {
   type = string
@@ -107,4 +107,12 @@ variable "dns_service_ip" {
 variable "docker_bridge_cidr" {
   type = string
   description = "Overlay Network"
+}
+
+
+############################################################ KV Module ######################################################################
+
+variable "kv_mappings" {
+  type        = map(any)
+  description = "Map of RG and KVs"
 }

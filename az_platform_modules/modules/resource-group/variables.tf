@@ -1,12 +1,21 @@
 variable "name" {
     description = "A static name of resource group provided by consumer."
     type = string
+    default = null
 }
 
 
 variable "context" {
     description = "context to consider if the name of rg is not provided"
-    type = map(string)
+    type = object({
+        org = optional(string)
+        app = string
+        env = string
+        region = string
+        instance = optional(string)
+    })
+    default = null
+
 }
 
 variable "location" {
@@ -17,4 +26,6 @@ variable "location" {
 variable "tags" {
     description = "A map of tags to assign to the resource group."
     type = map(string)
+    default = {}
+
 }

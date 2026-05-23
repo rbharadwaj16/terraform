@@ -5,7 +5,7 @@ locals {
         var.context.app,
         var.context.env,
         var.context.region,
-        var.context.instance
+        try(var.context.instance, null)
     ])
 
     computed_name = length(local.context_name_parts) > 0 ? lower(join("-", local.context_name_parts)) : null

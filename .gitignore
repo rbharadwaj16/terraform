@@ -1,1 +1,10 @@
 **/.DS_Store
+
+# Terraform local working directory
+**/.terraform/
+
+# Terraform dependency lock file
+**/.terraform.lock.hcl
+
+# Terraform state lock info files
+*.tfstate.lock.info

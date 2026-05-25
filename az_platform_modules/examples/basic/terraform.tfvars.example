@@ -1,0 +1,15 @@
+context = {
+  org      = "acme"
+  app      = "payments"
+  env      = "dev"
+  region   = "eus"
+  instance = "01"
+}
+
+location = "eastus"
+
+tags = {
+  env         = "dev"
+  owner       = "platform"
+  cost_center = "cc-demo"
+}

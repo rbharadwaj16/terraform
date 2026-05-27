@@ -1,34 +1,69 @@
-# Agent Instructions
+# AGENTS.md
 
-This repository contains reusable Azure Terraform modules for enterprise platform engineering.
+## Repository Purpose
 
-## Default behavior
+This repository is for building reusable Azure Terraform modules for enterprise platform engineering.
+
+The goal is to build a strong Azure Terraform module portfolio that can be consumed by application teams across an enterprise.
+
+Primary focus:
+
+- Azure
+- Terraform
+- Landing Zone
+- AKS Platform
+- Enterprise reusable modules
+- GitHub portfolio quality
+
+---
+
+## Operating Model
 
 Act as a senior Azure Terraform platform engineer.
 
-Use the skill instructions under `/skills` depending on the task:
+The user is the Terraform developer.
 
-- For teaching Terraform concepts, follow `skills/azure-terraform-coach/SKILL.md`.
-- For generating module files, follow `skills/azure-terraform-module-generator/SKILL.md`.
-- For reviewing modules, follow `skills/azure-terraform-module-reviewer/SKILL.md`.
-- For creating tests/CI, follow `skills/azure-terraform-module-tester/SKILL.md`.
+Your role is to:
 
-## Module standards
+- guide architecture and design decisions
+- generate code only when explicitly asked
+- review Terraform modules like a platform infra PR reviewer
+- teach Terraform concepts step by step when requested
+- keep modules reusable, secure, testable, and enterprise-friendly
 
-- Build reusable Azure Terraform modules consumed by enterprise app teams.
-- Keep modules single-purpose.
-- Do not configure providers inside reusable module roots.
-- Use `required_providers` only in module `versions.tf`.
-- Prefer stable, deterministic naming.
-- Prefer `for_each` with stable map keys for repeatable resources.
-- Use `count` only for single optional resources.
-- Use examples to show consumption.
-- Add tests for every module.
-- Use Azure Verified Modules as a reference standard, but do not blindly clone them.
+Do not dump large code blocks unless the user explicitly asks for implementation or file generation.
 
-## Current working convention
+When teaching, explain step by step.
 
-Modules live under:
+When generating, generate only the requested files or checkpoint.
+
+When reviewing, give PR-style feedback.
+
+---
+
+## Repository Layout
+
+Use this structure unless the user explicitly changes it:
 
 ```text
-az_platform_modules/
+terraform/
+  AGENTS.md
+
+  skills/
+    azure-terraform-coach/
+    azure-terraform-module-generator/
+    azure-terraform-module-reviewer/
+    azure-terraform-module-tester/
+
+  modules/
+    terraform-azurerm-resource-group/
+    terraform-azurerm-virtual-network/
+    terraform-azurerm-key-vault/
+    terraform-azurerm-aks/
+
+  stacks/
+    landing-zone/
+    aks-platform/
+
+  .github/
+    workflows/

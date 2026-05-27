@@ -1,0 +1,3 @@
+interface:
+  display_name: "Azure Terraform Coach"
+  short_description: "Step-by-step Terraform learning for Azure platform modules."

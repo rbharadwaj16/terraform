@@ -1,0 +1,3 @@
+interface:
+  display_name: "Azure Terraform Module Reviewer"
+  short_description: "PR-style review for enterprise Azure Terraform modules."

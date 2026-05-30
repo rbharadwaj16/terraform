@@ -55,6 +55,10 @@ terraform-azurerm-<module>/
 - Make weak/security-reducing behavior opt-in.
 - Expose discrete outputs. For repeated resources, output maps keyed by caller keys.
 
+## Reference files
+- Read `references/shared-module-standards.md` when generating or reviewing reusable module structure and cross-module conventions.
+- Read `references/resource-group-module.md` when generating, reviewing, or extending the Azure Resource Group module.
+
 ## Naming guidance
 For primitive resource modules, prefer explicit `name`. If the user wants convention-based naming, support `context` with a deterministic prefix and clear override rule: `name` wins, `context` fallback. Never use random names by default.
 

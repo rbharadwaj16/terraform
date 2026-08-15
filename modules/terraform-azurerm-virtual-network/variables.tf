@@ -33,3 +33,8 @@ variable "tags" {
     default     = {}
 }
 
+variable "dns_servers" {
+    description = "A list of DNS server IP addresses to use for the virtual network."
+    type        = list(string)
+    default     = []
+}

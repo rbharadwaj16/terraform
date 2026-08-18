@@ -9,7 +9,7 @@ output "virtual_network_name" {
   value       = azurerm_virtual_network.this.name
 }
 
-output "subnet_id" {
+output "subnet_ids" {
   description = "Subnet IDs"
   value = {
     for subnet_key, subnet in azurerm_subnet.this :

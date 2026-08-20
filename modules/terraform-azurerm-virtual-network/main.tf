@@ -14,4 +14,3 @@ resource "azurerm_subnet" "this" {
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.this.name
 }
-

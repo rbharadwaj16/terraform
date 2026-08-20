@@ -10,7 +10,7 @@ output "virtual_network_name" {
 }
 
 output "subnet_ids" {
-  description = "Subnet IDs"
+  description = "Subnet IDs keyed by the caller-defined subnet key."
   value = {
     for subnet_key, subnet in azurerm_subnet.this :
     subnet_key => subnet.id
